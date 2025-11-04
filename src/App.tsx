@@ -11,7 +11,7 @@ import { ListingsPage } from "./pages/ListingsPage";
 import { PropertyDetailPage } from "./pages/PropertyDetailPage";
 import { FavoritesPage } from "./pages/FavoritesPage";
 import { DashboardPage } from "./pages/DashboardPage";
-import { useWallet, WalletProvider } from "./components/Wallet/WalletProvider";
+import { WalletProvider } from "./components/Wallet/WalletProvider";
 
 const AppContent: React.FC = () => {
   const [favorites, setFavorites] = useState(["1", "4"]);

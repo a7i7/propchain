@@ -1,15 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Search, TrendingUp, Shield, Zap, ArrowRight, Star } from 'lucide-react';
-import { PropertyCard } from '../components/PropertyCard/PropertyCard';
-import { mockProperties, mockMarketData } from '../data/mockData';
+import React from "react";
+import { Link } from "react-router-dom";
+import { TrendingUp, Shield, Zap, ArrowRight } from "lucide-react";
+import { PropertyCard } from "../components/PropertyCard/PropertyCard";
+import { mockProperties, mockMarketData } from "../data/mockData";
 
 interface HomePageProps {
   onToggleFavorite: (id: string) => void;
   onPropertyClick: (id: string) => void;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ onToggleFavorite, onPropertyClick }) => {
+export const HomePage: React.FC<HomePageProps> = ({
+  onToggleFavorite,
+  onPropertyClick,
+}) => {
   const featuredProperties = mockProperties.slice(0, 3);
 
   return (
@@ -22,12 +25,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onToggleFavorite, onProperty
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.3),transparent_50%)]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_90%_10%,rgba(139,92,246,0.2),transparent_50%)]"></div>
         </div>
-        
+
         {/* Animated background elements */}
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-purple-500/5 to-pink-500/5 rounded-full blur-3xl animate-pulse delay-500"></div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
@@ -37,7 +40,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onToggleFavorite, onProperty
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto animate-fade-in delay-300">
-              Discover luxury real estate with blockchain technology. Secure, transparent, and revolutionary property investments.
+              Discover luxury real estate with blockchain technology. Secure,
+              transparent, and revolutionary property investments.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-500">
               <Link
@@ -68,19 +72,27 @@ export const HomePage: React.FC<HomePageProps> = ({ onToggleFavorite, onProperty
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">{mockMarketData.totalProperties.toLocaleString()}+</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">
+                {mockMarketData.totalProperties.toLocaleString()}+
+              </div>
               <div className="text-gray-600">Properties Listed</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600 mb-2">{mockMarketData.totalValue}</div>
+              <div className="text-3xl font-bold text-emerald-600 mb-2">
+                {mockMarketData.totalValue}
+              </div>
               <div className="text-gray-600">Total Value</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">{mockMarketData.nftProperties}</div>
+              <div className="text-3xl font-bold text-orange-600 mb-2">
+                {mockMarketData.nftProperties}
+              </div>
               <div className="text-gray-600">NFT Properties</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">{mockMarketData.monthlyGrowth}</div>
+              <div className="text-3xl font-bold text-purple-600 mb-2">
+                {mockMarketData.monthlyGrowth}
+              </div>
               <div className="text-gray-600">Monthly Growth</div>
             </div>
           </div>
@@ -97,38 +109,46 @@ export const HomePage: React.FC<HomePageProps> = ({ onToggleFavorite, onProperty
               Why Choose PropChain?
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Experience the future of real estate with blockchain-powered transparency and security.
+              Experience the future of real estate with blockchain-powered
+              transparency and security.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow group">
               <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Shield className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Blockchain Security</h3>
+              <h3 className="text-xl font-semibold mb-4">
+                Blockchain Security
+              </h3>
               <p className="text-gray-600">
-                Every transaction is secured by blockchain technology, ensuring transparency and immutable records.
+                Every transaction is secured by blockchain technology, ensuring
+                transparency and immutable records.
               </p>
             </div>
-            
+
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow group">
               <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Zap className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Instant Verification</h3>
+              <h3 className="text-xl font-semibold mb-4">
+                Instant Verification
+              </h3>
               <p className="text-gray-600">
-                Smart contracts enable instant property verification and seamless ownership transfers.
+                Smart contracts enable instant property verification and
+                seamless ownership transfers.
               </p>
             </div>
-            
+
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow group">
               <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <TrendingUp className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-4">NFT Properties</h3>
               <p className="text-gray-600">
-                Own unique digital property tokens that represent real estate assets on the blockchain.
+                Own unique digital property tokens that represent real estate
+                assets on the blockchain.
               </p>
             </div>
           </div>
@@ -156,7 +176,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onToggleFavorite, onProperty
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProperties.map((property) => (
               <PropertyCard
@@ -180,7 +200,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onToggleFavorite, onProperty
             Ready to Start Your Property Journey?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Join thousands of investors who trust PropChain for their real estate needs.
+            Join thousands of investors who trust PropChain for their real
+            estate needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

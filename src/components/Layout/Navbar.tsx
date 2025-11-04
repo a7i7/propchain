@@ -1,13 +1,12 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Home, Search, Heart, User, Wallet } from 'lucide-react';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Home, Wallet } from "lucide-react";
+import { getWalletAddressShort } from "../Wallet/util";
+import { useWallet } from "../Wallet/WalletProvider";
 
-interface NavbarProps {
-  onConnectWallet: () => void;
-  walletConnected: boolean;
-}
+export const Navbar: React.FC = () => {
+  const { showWalletManageDialog, activeWallet } = useWallet();
 
-export const Navbar: React.FC<NavbarProps> = ({ onConnectWallet, walletConnected }) => {
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -26,14 +25,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onConnectWallet, walletConnected
               </span>
             </Link>
           </div>
-          
+
           <div className="hidden md:flex items-center space-x-8">
             <Link
               to="/"
               className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/') 
-                  ? 'text-blue-600 border-b-2 border-blue-600' 
-                  : 'text-gray-600 hover:text-blue-600'
+                isActive("/")
+                  ? "text-blue-600 border-b-2 border-blue-600"
+                  : "text-gray-600 hover:text-blue-600"
               }`}
             >
               Home
@@ -41,9 +40,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onConnectWallet, walletConnected
             <Link
               to="/listings"
               className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/listings') 
-                  ? 'text-blue-600 border-b-2 border-blue-600' 
-                  : 'text-gray-600 hover:text-blue-600'
+                isActive("/listings")
+                  ? "text-blue-600 border-b-2 border-blue-600"
+                  : "text-gray-600 hover:text-blue-600"
               }`}
             >
               Listings
@@ -51,9 +50,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onConnectWallet, walletConnected
             <Link
               to="/favorites"
               className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/favorites') 
-                  ? 'text-blue-600 border-b-2 border-blue-600' 
-                  : 'text-gray-600 hover:text-blue-600'
+                isActive("/favorites")
+                  ? "text-blue-600 border-b-2 border-blue-600"
+                  : "text-gray-600 hover:text-blue-600"
               }`}
             >
               Favorites
@@ -61,9 +60,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onConnectWallet, walletConnected
             <Link
               to="/dashboard"
               className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/dashboard') 
-                  ? 'text-blue-600 border-b-2 border-blue-600' 
-                  : 'text-gray-600 hover:text-blue-600'
+                isActive("/dashboard")
+                  ? "text-blue-600 border-b-2 border-blue-600"
+                  : "text-gray-600 hover:text-blue-600"
               }`}
             >
               Dashboard
@@ -72,16 +71,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onConnectWallet, walletConnected
 
           <div className="flex items-center space-x-4">
             <button
-              onClick={onConnectWallet}
+              onClick={showWalletManageDialog}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                walletConnected
-                  ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'
-                  : 'bg-gradient-to-r from-blue-600 to-emerald-500 text-white hover:from-blue-700 hover:to-emerald-600 shadow-lg hover:shadow-xl transform hover:scale-105'
+                activeWallet
+                  ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
+                  : "bg-gradient-to-r from-blue-600 to-emerald-500 text-white hover:from-blue-700 hover:to-emerald-600 shadow-lg hover:shadow-xl transform hover:scale-105"
               }`}
             >
               <Wallet className="w-4 h-4" />
               <span className="hidden sm:block">
-                {walletConnected ? 'Wallet Connected' : 'Connect Wallet'}
+                {activeWallet
+                  ? `Wallet ${getWalletAddressShort(activeWallet)}`
+                  : "Connect Wallet"}
               </span>
             </button>
           </div>

@@ -33,6 +33,7 @@ npm start
 ```
 
 This starts both:
+
 - **Frontend** at `http://localhost:5173`
 - **Backend API** at `http://localhost:8000`
 
@@ -53,3 +54,11 @@ propchain/
 ---
 
 **That's it! Happy coding! 🚀**
+
+**WalletProvider Overview**
+
+The WalletProvider is a React context provider that manages all wallet-related state and actions across the application. It serves as a centralized store for wallet connections, keeping track of the user’s connected wallets, the currently active wallet, and handling persistence via localStorage.
+
+By exposing this shared context through useWallet(), components like the Dashboard and Navbar can easily access and modify wallet information without requiring prop drilling. It also includes logic to open and manage the WalletDialog component, allowing users to view, add, or switch wallets through a unified interface.
+
+In short, WalletProvider acts as the single source of truth for wallet management — making wallet state reusable, consistent, and accessible across the app.
